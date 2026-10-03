@@ -76,7 +76,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Post content is required" }, { status: 400 });
   }
 
-  const newPost = {
+  const newPost: Post = {
     id: Date.now(),
     author: body.author || "Guest",
     handle: body.handle || "@guest",
