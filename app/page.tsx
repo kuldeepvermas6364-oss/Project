@@ -44,102 +44,90 @@ type User = {
   avatar: string;
 };
 
-type AppState = {
-  user: User | null;
-  posts: Post[];
-  stories: Story[];
-  suggestions: Suggestion[];
-  messages: Message[];
-  trending: { tag: string; posts: string }[];
-};
-
-const defaultState: AppState = {
-  user: {
+const seedPosts: Post[] = [
+  {
     id: 1,
-    name: "Kuldeep Sharma",
-    handle: "@kuldeep",
-    avatar: "KS",
+    author: "Nina Brooks",
+    handle: "@ninab",
+    time: "3 min ago",
+    content:
+      "Morning coffee + a fresh idea for a new creator tool. Building something simple, useful, and a little bold. #BuildInPublic #Creators",
+    likes: 842,
+    comments: 48,
+    shares: 21,
+    image:
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+    avatar: "NB",
+    tags: ["#BuildInPublic", "#Creators"],
+    liked: false,
   },
-  posts: [
-    {
-      id: 1,
-      author: "Nina Brooks",
-      handle: "@ninab",
-      time: "3 min ago",
-      content:
-        "Morning coffee + a fresh idea for a new creator tool. Building something simple, useful, and a little bold. #BuildInPublic #Creators",
-      likes: 842,
-      comments: 48,
-      shares: 21,
-      image:
-        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
-      avatar: "NB",
-      tags: ["#BuildInPublic", "#Creators"],
-      liked: false,
-    },
-    {
-      id: 2,
-      author: "Milo Hart",
-      handle: "@milo",
-      time: "27 min ago",
-      content:
-        "The best product teams are shipping fast, listening hard, and turning feedback into weekly experiments.",
-      likes: 1532,
-      comments: 124,
-      shares: 35,
-      avatar: "MH",
-      tags: ["#Product"],
-      liked: true,
-    },
-    {
-      id: 3,
-      author: "Ava Stone",
-      handle: "@avastone",
-      time: "1 hr ago",
-      content:
-        "3AM concept: a social app that feels like a camera roll, a conversations thread, and a community feed all at once.",
-      likes: 2136,
-      comments: 198,
-      shares: 89,
-      image:
-        "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
-      avatar: "AS",
-      tags: ["#SocialMedia", "#Ideas"],
-      liked: false,
-    },
-  ],
-  stories: [
-    { id: 1, name: "Your Story", accent: "linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%)", live: true },
-    { id: 2, name: "Ava", accent: "linear-gradient(135deg, #f6d365 0%, #fda085 100%)", live: false },
-    { id: 3, name: "Milo", accent: "linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%)", live: false },
-    { id: 4, name: "Nina", accent: "linear-gradient(135deg, #c471f5 0%, #fa71cd 100%)", live: false },
-    { id: 5, name: "Leo", accent: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)", live: false },
-  ],
-  suggestions: [
-    { id: 1, name: "Maya Chen", reason: "Suggested for you" },
-    { id: 2, name: "Daniel Koa", reason: "Followed by your friends" },
-    { id: 3, name: "Ari Moss", reason: "Popular creator" },
-  ],
-  messages: [
-    { id: 1, name: "Luna", preview: "Last night’s story was iconic 💥", active: true },
-    { id: 2, name: "Theo", preview: "Can you share the mockup?", active: false },
-    { id: 3, name: "Rae", preview: "I’m in. Let’s ship it.", active: false },
-    { id: 4, name: "Ezra", preview: "New idea for the reels section", active: false },
-  ],
-  trending: [
-    { tag: "#Design", posts: "24.8k posts" },
-    { tag: "#BuildInPublic", posts: "18.2k posts" },
-    { tag: "#Creators", posts: "12.4k posts" },
-    { tag: "#NoCode", posts: "9.8k posts" },
-    { tag: "#AI", posts: "42.7k posts" },
-  ],
-};
+  {
+    id: 2,
+    author: "Milo Hart",
+    handle: "@milo",
+    time: "27 min ago",
+    content:
+      "The best product teams are shipping fast, listening hard, and turning feedback into weekly experiments.",
+    likes: 1532,
+    comments: 124,
+    shares: 35,
+    avatar: "MH",
+    tags: ["#Product"],
+    liked: true,
+  },
+  {
+    id: 3,
+    author: "Ava Stone",
+    handle: "@avastone",
+    time: "1 hr ago",
+    content:
+      "3AM concept: a social app that feels like a camera roll, a conversations thread, and a community feed all at once.",
+    likes: 2136,
+    comments: 198,
+    shares: 89,
+    image:
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
+    avatar: "AS",
+    tags: ["#SocialMedia", "#Ideas"],
+    liked: false,
+  },
+];
+
+const stories: Story[] = [
+  { id: 1, name: "Your Story", accent: "linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%)", live: true },
+  { id: 2, name: "Ava", accent: "linear-gradient(135deg, #f6d365 0%, #fda085 100%)", live: false },
+  { id: 3, name: "Milo", accent: "linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%)", live: false },
+  { id: 4, name: "Nina", accent: "linear-gradient(135deg, #c471f5 0%, #fa71cd 100%)", live: false },
+  { id: 5, name: "Leo", accent: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)", live: false },
+];
+
+const suggestions: Suggestion[] = [
+  { id: 1, name: "Maya Chen", reason: "Suggested for you" },
+  { id: 2, name: "Daniel Koa", reason: "Followed by your friends" },
+  { id: 3, name: "Ari Moss", reason: "Popular creator" },
+];
+
+const messages: Message[] = [
+  { id: 1, name: "Luna", preview: "Last night’s story was iconic 💥", active: true },
+  { id: 2, name: "Theo", preview: "Can you share the mockup?", active: false },
+  { id: 3, name: "Rae", preview: "I’m in. Let’s ship it.", active: false },
+  { id: 4, name: "Ezra", preview: "New idea for the reels section", active: false },
+];
+
+const trending = [
+  { tag: "#Design", posts: "24.8k posts" },
+  { tag: "#BuildInPublic", posts: "18.2k posts" },
+  { tag: "#Creators", posts: "12.4k posts" },
+  { tag: "#NoCode", posts: "9.8k posts" },
+  { tag: "#AI", posts: "42.7k posts" },
+];
 
 const tabLabels = ["Home", "Explore", "Reels", "Messages"];
 
 export default function HomePage() {
-  const [appState, setAppState] = useState<AppState>(defaultState);
-  const [isMounted, setIsMounted] = useState(false);
+  const [posts, setPosts] = useState<Post[]>(seedPosts);
+  const [user, setUser] = useState<User | null>(null);
+  const [isReady, setIsReady] = useState(false);
   const [authMode, setAuthMode] = useState<"signin" | "signup">("signin");
   const [activeTab, setActiveTab] = useState("Home");
   const [search, setSearch] = useState("");
@@ -152,82 +140,100 @@ export default function HomePage() {
   });
 
   useEffect(() => {
-    setIsMounted(true);
-    const stored = window.localStorage.getItem("loop-social-state");
-    if (stored) {
-      try {
-        const parsed = JSON.parse(stored) as AppState;
-        setAppState(parsed);
-      } catch (error) {
-        console.error("Invalid localStorage data", error);
-      }
+    const storedUser = window.localStorage.getItem("loop-social-user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
     }
-  }, []);
 
-  useEffect(() => {
-    if (isMounted) {
-      window.localStorage.setItem("loop-social-state", JSON.stringify(appState));
-    }
-  }, [appState, isMounted]);
+    fetch("/api/posts")
+      .then((response) => response.json())
+      .then((data: Post[]) => {
+        if (Array.isArray(data) && data.length > 0) {
+          setPosts(data);
+        }
+      })
+      .catch(() => {
+        setPosts(seedPosts);
+      })
+      .finally(() => setIsReady(true));
+  }, []);
 
   const filteredPosts = useMemo(() => {
     const query = search.trim().toLowerCase();
-    if (!query) return appState.posts;
+    if (!query) return posts;
 
-    return appState.posts.filter((post) => {
+    return posts.filter((post) => {
       const haystack = `${post.author} ${post.handle} ${post.content} ${post.tags.join(" ")}`.toLowerCase();
       return haystack.includes(query);
     });
-  }, [appState.posts, search]);
+  }, [posts, search]);
 
   const handleAuthSubmit = (event: FormEvent) => {
     event.preventDefault();
 
-    const name = authMode === "signup" ? authForm.name || "New User" : appState.user?.name || "Guest";
-    const username = authForm.username || appState.user?.handle || "@loopuser";
+    const name = authMode === "signup" ? authForm.name || "New User" : user?.name || "Guest";
+    const handle = (authForm.username || user?.handle || "@loopuser").startsWith("@")
+      ? authForm.username || user?.handle || "@loopuser"
+      : `@${authForm.username || user?.handle || "loopuser"}`;
+
     const nextUser: User = {
       id: Date.now(),
       name,
-      handle: username.startsWith("@") ? username : `@${username}`,
+      handle,
       avatar: (name || "LO").slice(0, 2).toUpperCase(),
     };
 
-    setAppState((prev) => ({
-      ...prev,
-      user: nextUser,
-    }));
-
+    setUser(nextUser);
+    window.localStorage.setItem("loop-social-user", JSON.stringify(nextUser));
     setAuthForm({ name: "", username: "", email: "", password: "" });
   };
 
-  const handlePostSubmit = () => {
-    if (!composeText.trim()) return;
+  const handlePostSubmit = async () => {
+    if (!composeText.trim() || !user) return;
 
-    const newPost: Post = {
-      id: Date.now(),
-      author: appState.user?.name || "You",
-      handle: appState.user?.handle || "@you",
-      time: "just now",
+    const payload = {
+      author: user.name,
+      handle: user.handle,
       content: composeText,
-      likes: 0,
-      comments: 0,
-      shares: 0,
-      avatar: appState.user?.avatar || "YO",
-      tags: composeText.match(/#\w+/g) || [],
-      liked: false,
+      avatar: user.avatar,
     };
 
-    setAppState((prev) => ({
-      ...prev,
-      posts: [newPost, ...prev.posts],
-    }));
-    setComposeText("");
+    try {
+      const response = await fetch("/api/posts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) throw new Error("Unable to create post");
+
+      const newPost = await response.json();
+      setPosts((current) => [newPost, ...current]);
+      setComposeText("");
+    } catch (error) {
+      const fallback: Post = {
+        id: Date.now(),
+        author: user.name,
+        handle: user.handle,
+        time: "just now",
+        content: composeText,
+        likes: 0,
+        comments: 0,
+        shares: 0,
+        avatar: user.avatar,
+        tags: composeText.match(/#\w+/g) || [],
+        liked: false,
+      };
+      setPosts((current) => [fallback, ...current]);
+      setComposeText("");
+    }
   };
 
   const toggleLike = (postId: number) => {
-    setAppState((prev) => ({
-      ...prev,
-      posts: prev.posts.map((post) => {
+    setPosts((current) =>
+      current.map((post) => {
         if (post.id !== postId) return post;
         const liked = !post.liked;
         return {
@@ -236,17 +242,15 @@ export default function HomePage() {
           likes: liked ? post.likes + 1 : Math.max(0, post.likes - 1),
         };
       }),
-    }));
+    );
   };
 
   const signOut = () => {
-    setAppState((prev) => ({
-      ...prev,
-      user: null,
-    }));
+    setUser(null);
+    window.localStorage.removeItem("loop-social-user");
   };
 
-  if (!appState.user) {
+  if (!user) {
     return (
       <main className="auth-page">
         <div className="auth-shell">
@@ -384,9 +388,9 @@ export default function HomePage() {
           <section className="profile-card">
             <div className="profile-cover" />
             <div className="profile-body">
-              <div className="avatar-lg">{appState.user.avatar}</div>
-              <h2>{appState.user.name}</h2>
-              <p>{appState.user.handle}</p>
+              <div className="avatar-lg">{user.avatar}</div>
+              <h2>{user.name}</h2>
+              <p>{user.handle}</p>
               <div className="stats-row">
                 <div>
                   <strong>12.4k</strong>
@@ -406,7 +410,7 @@ export default function HomePage() {
               <span>Today</span>
             </div>
             <ul className="list">
-              {appState.trending.map((item) => (
+              {trending.map((item) => (
                 <li key={item.tag}>
                   <span>{item.tag}</span>
                   <small>{item.posts}</small>
@@ -424,7 +428,7 @@ export default function HomePage() {
                 <span>Live now</span>
               </div>
               <div className="message-thread">
-                {appState.messages.map((message) => (
+                {messages.map((message) => (
                   <div className="chat-row" key={message.id}>
                     <div className="status-dot" />
                     <div>
@@ -442,7 +446,7 @@ export default function HomePage() {
                 <span>Top tags</span>
               </div>
               <div className="tag-grid">
-                {appState.trending.map((item) => (
+                {trending.map((item) => (
                   <div key={item.tag} className="tag-card">
                     <span>{item.tag}</span>
                     <small>{item.posts}</small>
@@ -457,8 +461,14 @@ export default function HomePage() {
                 <span>Now watching</span>
               </div>
               <div className="reel-grid">
-                {appState.posts.slice(0, 3).map((post) => (
-                  <div key={post.id} className="reel-card" style={{ backgroundImage: `url(${post.image || "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=800&q=80"})` }}>
+                {posts.slice(0, 3).map((post) => (
+                  <div
+                    key={post.id}
+                    className="reel-card"
+                    style={{
+                      backgroundImage: `url(${post.image || "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=800&q=80"})`,
+                    }}
+                  >
                     <div className="reel-overlay">
                       <strong>{post.author}</strong>
                       <span>{post.likes} likes</span>
@@ -471,7 +481,7 @@ export default function HomePage() {
             <>
               <section className="composer card">
                 <div className="composer-header">
-                  <div className="mini-avatar">{appState.user.avatar}</div>
+                  <div className="mini-avatar">{user.avatar}</div>
                   <textarea
                     value={composeText}
                     onChange={(e) => setComposeText(e.target.value)}
@@ -490,7 +500,7 @@ export default function HomePage() {
               </section>
 
               <section className="stories-row card">
-                {appState.stories.map((story) => (
+                {stories.map((story) => (
                   <div key={story.id} className="story-item">
                     <div
                       className={`story-ring ${story.live ? "live" : ""}`}
@@ -547,11 +557,9 @@ export default function HomePage() {
               <span>For you</span>
             </div>
             <ul className="suggest-list">
-              {appState.suggestions.map((account) => (
+              {suggestions.map((account) => (
                 <li key={account.id}>
-                  <div className="mini-avatar small">
-                    {account.name.slice(0, 2).toUpperCase()}
-                  </div>
+                  <div className="mini-avatar small">{account.name.slice(0, 2).toUpperCase()}</div>
                   <div>
                     <strong>{account.name}</strong>
                     <small>{account.reason}</small>
@@ -568,7 +576,7 @@ export default function HomePage() {
               <span>Online</span>
             </div>
             <ul className="message-list">
-              {appState.messages.map((message) => (
+              {messages.map((message) => (
                 <li key={message.id} className={message.active ? "active" : ""}>
                   <div className="dot" />
                   <div>
@@ -581,6 +589,9 @@ export default function HomePage() {
           </section>
         </aside>
       </div>
+      {!isReady && <div className="loading-bar" aria-live="polite" />}
     </main>
   );
 }
+
+

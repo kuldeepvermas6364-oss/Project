@@ -780,6 +780,19 @@ h1 {
   color: var(--muted);
 }
 
+.loading-bar {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  animation: shimmer 1.5s infinite linear;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
 @media (max-width: 1180px) {
   .layout-grid {
     grid-template-columns: 1fr;
