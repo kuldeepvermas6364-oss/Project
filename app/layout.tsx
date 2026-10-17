@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Loop Social",
-  description: "A mixed social media app inspired by Instagram, Twitter, and Snapchat.",
+  title: "Studyspace — Your learning hub",
+  description: "A calm, focused study workspace with subjects, practice quizzes, flashcards, planning, notes, focus sessions and progress tracking.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -1,13 +1,17 @@
-# Loop Social
+# Studyspace
 
-A social media MVP inspired by Instagram, Twitter, and Snapchat.
+A lightweight, responsive study workspace built with Next.js, React and TypeScript.
 
 ## Features
-- Modern social dashboard
-- Stories, feed, explore, reels, and messages sections
-- Auth flow simulation with local persistence
-- Post creation and like interaction
-- API endpoints for posts, auth, and social data
+- Overview dashboard with subject progress, task priorities and a Pomodoro-style focus timer
+- Subject library with per-subject progress tracking
+- Five-question multiple-choice practice quiz
+- Active-recall flashcards, including cards generated from saved notes
+- Daily planner with tasks that can be checked off
+- Personal notes with subject labels
+- Progress summary for study sessions, tasks and subjects
+- Local persistence in the browser; no account or API credentials required
+- Responsive layout and keyboard-accessible controls
 
 ## Run locally
 
@@ -16,12 +20,14 @@ npm install
 npm run dev
 ```
 
-Then open http://localhost:3000
+Then open http://localhost:3000.
+
+## Data and privacy
+
+Studyspace stores its demo study data in this browser's local storage. It does not sync between devices or provide server-backed accounts. Clear this site's data in your browser to reset the sample workspace.
 
 ## Stack
-- Next.js
-- TypeScript
-- React
 
-## Notes
-This version is a fast MVP/working prototype with persistent frontend state and lightweight API routes. It is ready for the next step: real database-backed auth and social data.
+- Next.js 14
+- React 18
+- TypeScript
