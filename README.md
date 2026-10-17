@@ -5,13 +5,13 @@ A lightweight, responsive study workspace built with Next.js, React and TypeScri
 ## Features
 - Overview dashboard with subject progress, task priorities and a Pomodoro-style focus timer
 - Subject library with per-subject progress tracking
-- Five-question multiple-choice practice quiz
+- Five-question multiple-choice practice quiz with a saved latest score
 - Active-recall flashcards, including cards generated from saved notes
 - Daily planner with tasks that can be checked off
 - Personal notes with subject labels
-- Progress summary for study sessions, tasks and subjects
+- Progress summary for study sessions, tasks, quizzes and subjects
 - Local persistence in the browser; no account or API credentials required
-- Responsive layout and keyboard-accessible controls
+- Responsive layout, keyboard-accessible controls and an installable web-app manifest
 
 ## Run locally
 
